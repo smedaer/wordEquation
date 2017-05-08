@@ -16,7 +16,7 @@ public:
 
     void solve();
 
-    /*int getN() { return N; }
+    int getN() { return N; }
     void setN(int newN) { N=newN; }
     int getR() { return R; }
     void setR(int newR) { R=newR; }
@@ -25,7 +25,7 @@ public:
     int getP() { return P; }
     void setP(int newP) { P=newP; }
     int getQ() { return Q; }
-    void setQ(int newQ) { Q=newQ; }*/
+    void setQ(int newQ) { Q=newQ; }
 
 private:
     //constants
@@ -41,6 +41,8 @@ private:
     list<int> operations;
 
     string result;
+
+    bool printFlag = false;
 
     //propositions
     int** posLeftLetterProp;
