@@ -42,7 +42,7 @@ private:
 
     string result;
 
-    bool printFlag = false;
+    bool printFlag = true;
 
     //propositions
     int** posLeftLetterProp;
