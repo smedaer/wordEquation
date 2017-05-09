@@ -94,9 +94,9 @@ int InitWordEq::indexAlphabet(char letter) {
     int result = -1;
     for (int i=0; i<static_cast<int>(alphabet.size()); i++) {
         if (alphabet[i]==letter) result = i;
-        cout << "in alphabet fct  " << alphabet[i] << " " << letter << endl;
+        //cout << "in alphabet fct  " << alphabet[i] << " " << letter << endl;
     }
-    cout << "\n";
+    //cout << "\n";
     return result;
 }
 
