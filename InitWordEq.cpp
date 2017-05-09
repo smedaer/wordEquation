@@ -34,7 +34,7 @@ void InitWordEq::getInitEq() {
     //memberLeft
     for (int i1=0; i1<static_cast<int>(memberLeft.size()); i1++) {
         letterPos = indexAlphabet(memberLeft[i1]);
-        cout << "left member" << letterPos << endl;
+        //cout << "left member" << letterPos << endl;
         if (letterPos!=-1) {
             initEq.push_back(-1);
             initEq.push_back(0);
@@ -62,7 +62,7 @@ void InitWordEq::getInitEq() {
     //memberRight
     for (int j1=0; j1<static_cast<int>(memberRight.size()); j1++) {
         letterPos = indexAlphabet(memberRight[j1]);
-        cout << "right member" << letterPos << endl;
+        //cout << "right member" << letterPos << endl;
         if (letterPos!=-1) {
             initEq.push_back(-1);
             initEq.push_back(1);
@@ -103,7 +103,7 @@ int InitWordEq::indexAlphabet(char letter) {
 list<int> InitWordEq::getEqInfo() {
     getDataInput();
     getInitEq();
-    printResult();
+    //printResult();
     return initEq;
 }
 

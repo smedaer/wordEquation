@@ -314,13 +314,19 @@ void WordEq::generateContinuityConstraints(Solver &s, int member) {
                 }
             }
         }
-	for (int j=0; j<Q; j++) {
-		for (int k1=0; k1<(L+1); k1++) {
-			for (int k2=(k1+1); k2<L; k2++) {
-				s.addBinary(~Lit(endRightVarProp[j][k1]), ~Lit(startRightVarProp[j][k2]));
-			}
-		}
-	}
+        if (printFlag) {
+            cout << "\n";
+        }
+        for (int j=0; j<Q; j++) {
+            for (int k1=0; k1<(L+1); k1++) {
+                for (int k2=(k1+1); k2<L; k2++) {
+                    s.addBinary(~Lit(endRightVarProp[j][k1]), ~Lit(startRightVarProp[j][k2]));
+                    if (printFlag) {
+                        cout << " -" << "F[" << j << "][" << k1 << "][1]" << " \\/ " << "-" << "D[" << j << "][" << k2 << "][1]" << endl;
+                    }
+                }
+            }
+        }
         /*for (int j=0; j<Q; j++) {
             for (int k1=0; k1<(L+1); k1++) {
                 for (int k2=(k1+1); k2<L; k2++) {
@@ -340,13 +346,19 @@ void WordEq::generateContinuityConstraints(Solver &s, int member) {
                 }
             }
         }
-	for (int i=0; i<P; i++) {
-		for (int k1=0; k1<(L+1); k1++) {
-			for (int k2=(k1+1); k2<L; k2++) {
-				s.addBinary(~Lit(endRightVarProp[i][k1]), ~Lit(startRightVarProp[i][k2]));
-			}
-		}
-	}
+        if (printFlag) {
+            cout << "\n";
+        }
+        for (int i=0; i<P; i++) {
+            for (int k1=0; k1<(L+1); k1++) {
+                for (int k2=(k1+1); k2<L; k2++) {
+                    s.addBinary(~Lit(endLeftVarProp[i][k1]), ~Lit(startLeftVarProp[i][k2]));
+                    if (printFlag) {
+                        cout << " -" << "F[" << i << "][" << k1 << "][0]" << " \\/ " << "-" << "D[" << i << "][" << k2 << "][0]" << endl;
+                    }
+                }
+            }
+        }
         /*for (int i=0; i<P; i++) {
             for (int k1=0; k1<(L+1); k1++) {
                 for (int k2=(k1+1); k2<L; k2++) {
@@ -717,7 +729,9 @@ void WordEq::generateVarLengthEqualityConstraints(Solver &s, int member1, int me
                     }
                 }
                 s.addClause(lits);
-                cout << "\n";
+                if (printFlag) {
+                    cout << "\n";
+                }
             }
         }
     } else if (member1 || member2) {
@@ -739,7 +753,9 @@ void WordEq::generateVarLengthEqualityConstraints(Solver &s, int member1, int me
                     }
                 }
                 s.addClause(lits);
-                cout << "\n";
+                if (printFlag) {
+                    cout << "\n";
+                }
             }
         }
     } else {
@@ -761,7 +777,9 @@ void WordEq::generateVarLengthEqualityConstraints(Solver &s, int member1, int me
                     }
                 }
                 s.addClause(lits);
-                cout << "\n";
+                if (printFlag) {
+                    cout << "\n";
+                }
             }
         }
     }
@@ -787,7 +805,7 @@ void WordEq::parseSolution(const Solver &s) {
             throw logic_error("more than one letter for a position");
         }
     }
-    cout << "\n";
+    cout << "\nleft member" << endl;
     for (int i=0; i<P; i++) {
         indexUnit=0;
         indexUnit1=0;
@@ -810,7 +828,7 @@ void WordEq::parseSolution(const Solver &s) {
             throw logic_error("more than one end for a position");
         }
     }
-    cout << "\nmember droit" << endl;
+    cout << "\nright member" << endl;
     for (int j=0; j<Q; j++) {
         for (int k=0; k<(L+1); k++) {
             if (k!=L) {
